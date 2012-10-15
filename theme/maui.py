@@ -83,10 +83,10 @@ class Theme(ThemeBase):
 
 	stylesheets = (
 		# media		basename
-		('all',		'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
-		('screen',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
-		('print',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
-		('projection',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
+		('all',		'moinmoin'),
+		('screen',	'moinmoin'),
+		('print',	'moinmoin'),
+		('projection',	'moinmoin'),
 		)
 
 	def header(self, d, **kw):
