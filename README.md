@@ -9,8 +9,8 @@ Edit *wikiconfig.py* and change the *theme_default* value to *bootstrap*.
 Now install the theme:
 
 ```sh
-cp -R theme/bootstrap $wikidir/htdocs/maui
-cp theme/bootstrap.py $wikidir/theme/maui.py
+cp -R theme/maui $wikidir/htdocs/maui
+cp theme/maui.py $wikidir/theme/maui.py
 ```
 
 where *$wikidir* is wiki deployment directory.

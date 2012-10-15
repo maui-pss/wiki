@@ -1,8 +1,9 @@
 # -*- coding: iso-8859-1 -*-
 """
-	MoinMoin - Bootstrap theme.
+	MoinMoin - Maui theme.
 
 	@copyright: 2003-2005 Nir Soffer, Thomas Waldmann
+	@copyright: 2012 Pier Luigi Fiorini
 	@license: GNU GPL, see COPYING for details.
 """
 
@@ -13,7 +14,7 @@ from MoinMoin.Page import Page
 from MoinMoin.config import multiconfig, url_prefix_static
 
 class Theme(ThemeBase):
-	name = "bootstrap"
+	name = "maui"
 
 	_ = lambda x: x	 # We don't have gettext at this moment, so we fake it
 	icons = {
@@ -82,10 +83,10 @@ class Theme(ThemeBase):
 
 	stylesheets = (
 		# media		basename
-		('all',		'bootstrap'),
-		('screen',	'bootstrap'),
-		('print',	'bootstrap'),
-		('projection',	'bootstrap'),
+		('all',		'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
+		('screen',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
+		('print',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
+		('projection',	'bootstrap.min, maui.layout, maui.styles, maui.bootstrap'),
 		)
 
 	def header(self, d, **kw):
@@ -340,11 +341,8 @@ searchChange(e);
 					self.credits(d),
 				u'</div>',
 			u'</div>',
-			u'<script src="%s/bootstrap/js/jquery.js"></script>' % url_prefix_static,
-			u'<script src="%s/bootstrap/js/bootstrap-transition.js"></script>' % url_prefix_static,
-			u'<script src="%s/bootstrap/js/bootstrap-alert.js"></script>' % url_prefix_static,
-			u'<script src="%s/bootstrap/js/bootstrap-collapse.js"></script>' % url_prefix_static,
-			u'<script src="%s/bootstrap/js/bootstrap-dropdown.js"></script>' % url_prefix_static,
+			u'<script src="%s/bootstrap/js/jquery-1.8.1.min.js"></script>' % url_prefix_static,
+			u'<script src="%s/bootstrap/js/bootstrap.min.js"></script>' % url_prefix_static,
 			self.showversion(d, **keywords),
 			u'</footer>',
 
