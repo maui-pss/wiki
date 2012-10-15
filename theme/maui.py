@@ -104,7 +104,7 @@ class Theme(ThemeBase):
 			# Header
 			u'<div class="navbar">',
 				u'<div class="navbar-inner">',
-					u'<div class="container">',
+					u'<div class="container-fluid">',
 						u'<a class="brand" href="#">%s</a>' % self.cfg.sitename,
 						self.navibar(d),
 						self.searchform(d),
@@ -112,21 +112,22 @@ class Theme(ThemeBase):
 				u'</div>',
 			u'</div>',
 
-
-			u'<div class="container">',
-				u'<div class="row">',
-					self.title_with_separators(d),
-					self.username(d),
-					'<ul class="subnav">',
-						'<ul class="nav nav-pills">',
-							self.editbar(d),
+			u'<div class="container-fluid">',
+				u'<div class="row-fluid">',
+					u'<div class="content">',
+						self.title_with_separators(d),
+						self.username(d),
+						'<ul class="subnav">',
+							'<ul class="nav nav-pills">',
+								self.editbar(d),
+							'</ul>',
 						'</ul>',
-					'</ul>',
+					u'</div>',
 				u'</div>',
 			u'</div>',
 
-			u'<div class="container">',
-				u'<div class="row">',
+			u'<div class="container-fluid">',
+				u'<div class="row-fluid">',
 					u'<div class="span4">',
 					self.msg(d),
 					u'</div>',
@@ -149,7 +150,7 @@ class Theme(ThemeBase):
 		@rtype: unicode
 		@return: page div with language and direction attribtues
 		"""
-		return u'<div class="container"%s>\n' % self.content_lang_attr()
+		return u'<div class="container-fluid"%s>\n' % self.content_lang_attr()
 
 	def navibar(self, d):
 		html = ThemeBase.navibar(self, d)
@@ -255,8 +256,7 @@ searchChange(e);
 				curpage = ''
 				for s in segments[:-1]:
 					curpage += s
-					content.append(Page(self.request,
-										curpage).link_to(self.request, s))
+					content.append(Page(self.request, curpage).link_to(self.request, s))
 					curpage += '/'
 				path_html = u'<span class="divider">/</span></li><li>'.join(content)
 				html = u'<li>%s<span class="divider">/</span></li><li class="active">%s</li>' % (path_html, link)
@@ -335,19 +335,27 @@ searchChange(e);
 			self.emit_custom_html(self.cfg.page_footer1),
 
 			# Footer
-			u'<footer class="footer">',
-				u'<div class="container">',
-				u'<div class="row">',
-					self.credits(d),
+			u'<footer>',
+				u'<div id="footer-floor">',
+					u'<div class="container-fluid">',
+						u'<div class="row-fluid">',
+							u'<div class="span2"></div>',
+							u'<div class="span4">',
+								u'<p>',
+									u'Copyright &copy; 2012 <a href="http://plfiorini.blogspot.com/">Pier Luigi Fiorini</a>. All rights reserved.<br>',
+									self.credits(d), u'<br>',
+									self.showversion(d, **keywords), u'<br>',
+									self.emit_custom_html(self.cfg.page_footer2),
+								u'</p>',
+							u'</div>',
+							u'<div class="span2"></div>',
+							u'<div class="span2"></div>',
+						u'</div>',
+					u'</div>',
 				u'</div>',
-			u'</div>',
+			u'</footer>',
 			u'<script src="%s/bootstrap/js/jquery-1.8.1.min.js"></script>' % url_prefix_static,
 			u'<script src="%s/bootstrap/js/bootstrap.min.js"></script>' % url_prefix_static,
-			self.showversion(d, **keywords),
-			u'</footer>',
-
-			# Post footer custom html
-			self.emit_custom_html(self.cfg.page_footer2),
 			]
 		return u'\n'.join(html)
 
