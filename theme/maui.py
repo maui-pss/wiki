@@ -105,41 +105,33 @@ class Theme(ThemeBase):
 			u'<div class="navbar">',
 				u'<div class="navbar-inner">',
 					u'<div class="container-fluid">',
-						u'<a class="brand" href="#">%s</a>' % self.cfg.sitename,
+						u'<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">',
+							u'<span class="icon-bar"></span>',
+							u'<span class="icon-bar"></span>',
+							u'<span class="icon-bar"></span>',
+						u'</a>',
+						u'<a class="brand" href="/">%s</a>' % self.cfg.sitename,
 						self.navibar(d),
 						self.searchform(d),
 					u'</div>',
 				u'</div>',
 			u'</div>',
 
-			u'<div class="container-fluid">',
-				u'<div class="row-fluid">',
-					u'<div class="content">',
-						self.title_with_separators(d),
-						self.username(d),
-						'<ul class="subnav">',
-							'<ul class="nav nav-pills">',
-								self.editbar(d),
-							'</ul>',
-						'</ul>',
-					u'</div>',
-				u'</div>',
-			u'</div>',
+			# Start of page
+			self.startPage(),
 
-			u'<div class="container-fluid">',
-				u'<div class="row-fluid">',
-					u'<div class="span4">',
-					self.msg(d),
-					u'</div>',
-				u'</div>',
-			u'</div>',
-			#self.trail(d),
+			# Breadcrumb and options
+			self.title_with_separators(d),
+			self.username(d),
+			u'<ul class="subnav">',
+				'<ul class="nav nav-pills">',
+					self.editbar(d),
+				'</ul>',
+			'</ul>',
+			self.msg(d),
 
 			# Post header custom html (not recommended)
 			self.emit_custom_html(self.cfg.page_header2),
-
-			# Start of page
-			self.startPage(),
 		]
 		return u'\n'.join(html)
 
@@ -150,7 +142,30 @@ class Theme(ThemeBase):
 		@rtype: unicode
 		@return: page div with language and direction attribtues
 		"""
-		return u'<div class="container-fluid"%s>\n' % self.content_lang_attr()
+		html = [
+			u'<div class="container-fluid"%s>' % self.content_lang_attr(),
+				u'<div class="row-fluid">',
+					u'<div class="span2"></div>',
+					u'<div class="span8">',
+						u'<div class="content">',
+		]
+		return u'\n'.join(html)
+
+	def endPage(self):
+		"""
+		End page div
+
+		@rtype: unicode
+		@return: page div
+		"""
+		html = [
+						u'</div>',
+					u'</div>',
+					u'<div class="span2"></div>',
+				u'</div>',
+			u'</div>',
+		]
+		return u'\n'.join(html)
 
 	def navibar(self, d):
 		html = ThemeBase.navibar(self, d)
@@ -341,12 +356,10 @@ searchChange(e);
 						u'<div class="row-fluid">',
 							u'<div class="span2"></div>',
 							u'<div class="span4">',
-								u'<p>',
-									u'Copyright &copy; 2012 <a href="http://plfiorini.blogspot.com/">Pier Luigi Fiorini</a>. All rights reserved.<br>',
-									self.credits(d), u'<br>',
-									self.showversion(d, **keywords), u'<br>',
-									self.emit_custom_html(self.cfg.page_footer2),
-								u'</p>',
+								u'<p>Copyright &copy; 2012 <a href="http://plfiorini.blogspot.com/">Pier Luigi Fiorini</a>. All rights reserved.</p>',
+								self.credits(d),
+								self.showversion(d, **keywords),
+								self.emit_custom_html(self.cfg.page_footer2),
 							u'</div>',
 							u'<div class="span2"></div>',
 							u'<div class="span2"></div>',
@@ -364,7 +377,8 @@ searchChange(e);
 		if isinstance(self.cfg.page_credits, (list, tuple)):
 			items = self.cfg.page_credits
 			item_html = u'<span class="sep"> | </span>'.join(items)
-			html = u'<div class="nav" style="text-align:center">%s</div>' % item_html
+			#html = u'<div class="nav" style="text-align:center">%s</div>' % item_html
+			html = u'<p>' + item_html + u'</p>'
 		else:
 			# Old config using string, output as is
 			html = self.cfg.page_credits
