@@ -245,6 +245,41 @@ searchChange(e);
 ''' % d
 		return html
 
+	def headscript(self, d):
+		"""
+		Return html head script with common functions
+
+		@param d: parameter dictionary
+		@rtype: unicode
+		@return: script for html head
+		"""
+		# Don't add script for print view
+		if self.request.action == 'print':
+			return u''
+
+		_ = self.request.getText
+		script = u"""
+<script type="text/javascript">
+<!--
+var search_hint = "%(search_hint)s";
+//-->
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount", "UA-33602199-1']);
+	_gaq.push(['_setDomainName', 'maui-project.org']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+""" % {'search_hint': _('Search')}
+		return script
+
 	def title_with_separators(self, d):
 		"""
 		Assemble the title using slashes, not <ul>
