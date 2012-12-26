@@ -1,10 +1,17 @@
-.news-row:not(:last-child) {
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 0.8em;
+/*
+ * News styles.
+ *
+ * Copyright (C) 2012 Pier Luigi Fiorini
+ *
+ */
+
+.news-item {
+	padding-bottom: 1em;
+	margin-bottom: 1.2em;
+	border-bottom: 1px solid #eee;
 }
 
-hr {
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+.news-item .title {
+	margin: 0 0 5px 0;
+	line-height: 1;
 }

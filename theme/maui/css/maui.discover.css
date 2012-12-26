@@ -1,0 +1,37 @@
+.hero-unit {
+	position: relative;
+	padding: 40px 0 0;
+	background: transparent;
+}
+
+#discover-carousel {
+	max-width: 100%;
+	position: relative;
+	height: 540px;
+	background: url(../img/laptop.png) transparent top center no-repeat;
+	margin: 30px 0 0 0;
+}
+
+#discover-carousel .carousel {
+	width: 600px;
+	margin: 0 auto;
+	padding: 28px 0 0 0;
+}
+
+.carousel {
+	position: relative;
+}
+
+#discover-carousel .carousel .item {
+	width: 600px;
+	height: 360px;
+	overflow: hidden;
+}
+
+#discover-carousel .carousel-control.left {
+	left: -160px;
+}
+
+#discover-carousel .carousel-control.right {
+	right: -160px;
+}

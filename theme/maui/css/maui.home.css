@@ -1,0 +1,131 @@
+/*
+ * Home page styles.
+ *
+ * Copyright (C) 2012 Pier Luigi Fiorini
+ *
+ */
+
+/*
+ * Navbar and page header are closer on the home page
+ */
+
+.navbar {
+	margin-bottom: 0px !important;
+}
+
+.navbar-inner {
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* Nice page header */
+.page-header {
+	margin: 0px !important;
+	padding-top: 2.5em;
+	background-color: #d0d0d0;
+	background-image: url(../img/patterns/solid.png);
+	background-image: -webkit-image-set(url(../img/patterns/solid.png) 1x,
+					url(../img/patterns/solid_@2X.png) 2x);
+	background-image: -moz-image-set(url(../img/patterns/solid.png) 1x,
+					url(../img/patterns/solid_@2X.png) 2x);
+	background-image: -o-image-set(url(../img/patterns/solid.png) 1x,
+					url(../img/patterns/solid_@2X.png) 2x);
+	background-image: -ms-image-set(url(../img/patterns/solid.png) 1x,
+					url(../img/patterns/solid_@2X.png) 2x);
+	box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
+	-moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
+	-webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 3px rgba(0, 0, 0, 0.25) inset;
+	text-shadow: 1px 1px 1px white;
+}
+
+/*
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+	.page-header h4 {
+		font-size: 50%;
+	}
+}
+*/
+
+/* Margins between carousel control and contents */
+.carousel-contents {
+	margin-left: 80px !important;
+	margin-right: 80px !important;
+}
+
+/*
+ * Custom carousel controls
+ */
+
+.carousel .carousel-control {
+	-webkit-border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+	border: none;
+	text-align: center;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+	-webkit-transition: all 0.8s ease-out;
+	-moz-transition: all 0.8s ease-out;
+	-o-transition: all 0.8s ease-out;
+	transition: all 0.8s ease-out;
+}
+
+.carousel:hover .carousel-caption {
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+}
+
+.carousel:hover .carousel-control {
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+/*
+ * Social buttons
+ */
+
+.home-social {
+	padding: 15px 0;
+	text-align: center;
+	background-color: whiteSmoke;
+	border-top: 1px solid white;
+	border-bottom: 1px solid #ddd;
+}
+
+.home-social-buttons {
+	margin-left: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style: none;
+	font-size: 24px;
+}
+
+.home-social-buttons li {
+	display: inline-block;
+	padding: 10px 0 0 0;
+}
+
+.home-social a {
+	text-decoration: none;
+	color: #444;
+	text-shadow: 1px 1px 1px white;
+	-webkit-transition: color 0.5s ease-in;
+	-moz-transition: color 0.5s ease-in;
+	-o-transition: color 0.5s ease-in;
+	transition: color 0.5s ease-in;
+}
+
+.home-social a:hover {
+	color: #888;
+}
+
+/* Special rule */
+hr {
+	margin: 30px 0;
+	border: 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #eee;
+}
